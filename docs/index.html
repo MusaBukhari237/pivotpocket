@@ -1,38 +1,112 @@
 <!doctype html>
 <html lang="en" data-app="pivotpocket">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
-<title>Pivot CSV in your browser | PivotPocket</title>
-<meta name="description" content="Group rows by two columns and calculate counts or sums without uploading your data.">
-<link rel="canonical" href="https://musabukhari237.github.io/pivotpocket/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pivot CSV in your browser | PivotPocket">
-<meta property="og:description" content="Group rows by two columns and calculate counts or sums without uploading your data.">
-<meta property="og:url" content="https://musabukhari237.github.io/pivotpocket/">
-<meta property="og:image" content="https://musabukhari237.github.io/pivotpocket/preview.png">
-<meta property="og:image:alt" content="PivotPocket showing the tool with an example result">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="app.css">
-<script src="app.mjs" type="module"></script>
-  <script type="module" src="experience.mjs"></script>
-  <script type="module" src="experience.mjs"></script>
-</head>
-<body>
-<a class="skip" href="#workspace">Skip to workspace</a>
-<header><a class="brand" href="./"><img src="logo.svg" alt="">PivotPocket</a><nav aria-label="Main"><a href="#guide">How to use</a><a class="repo" href="https://github.com/MusaBukhari237/pivotpocket">GitHub ↗</a></nav></header>
-<main>
-<section class="masthead"><div class="intro"><p class="category">Data workbench</p><h1>Rows become answers.</h1><p class="description">Group a CSV into a compact pivot. Compare categories with counts or sums.</p></div><figure class="scene diagram"><img src="scene.svg" alt="Data workbench process illustration" width="440" height="260"></figure></section>
-<div class="workspace" id="workspace">
-<section class="panel input" aria-labelledby="settings"><h2 id="settings">Arrange your fields</h2>
-<div class="fields"><label class="wide">CSV with a header row<textarea id="csv" placeholder="Region,Product,Units" maxlength="250000" spellcheck="false" rows="6"></textarea></label><label>Rows<select id="row"></select></label><label>Columns<select id="column"></select></label><label>Operation<select id="mode"><option value="sum">Sum</option><option value="count">Count rows</option></select></label><label>Values<select id="value"></select></label></div><div class="actions"><button type="button" id="run">Build pivot</button><button type="button" class="quiet" id="example">Load example</button></div><p class="note">Choose one row field and one column field. Sum requires a numeric values column.</p>
-</section>
-<section class="panel output" aria-labelledby="output" id="output-panel"><h2 id="output" tabindex="-1">Pivot table</h2><p class="result-status" id="result-status" aria-live="polite">Ready when you are</p><div class="result" id="result" aria-live="polite">Load the example or enter your own input.</div></section>
-</div>
-<details class="guide" id="guide"><summary>How to use PivotPocket</summary><ol><li>Paste CSV with a header row.</li><li>Choose row and column fields, then a sum or count.</li><li>Build a pivot and download the grouped values.</li></ol></details>
-</main>
-<footer><span>PivotPocket · <a href="https://github.com/MusaBukhari237/pivotpocket/blob/main/LICENSE">MIT licensed</a></span><span class="credits"><a href="https://www.leadceleris.com/">LeadCeleris</a><a href="https://www.aifficiento.biz/">AIFFICIENTO</a></span></footer>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'"
+    />
+    <title>Pivot CSV in your browser | PivotPocket</title>
+    <meta
+      name="description"
+      content="Group rows by two columns and calculate counts or sums without uploading your data."
+    />
+    <link rel="canonical" href="https://musabukhari237.github.io/pivotpocket/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pivot CSV in your browser | PivotPocket" />
+    <meta
+      property="og:description"
+      content="Group rows by two columns and calculate counts or sums without uploading your data."
+    />
+    <meta property="og:url" content="https://musabukhari237.github.io/pivotpocket/" />
+    <meta property="og:image" content="https://musabukhari237.github.io/pivotpocket/preview.png" />
+    <meta property="og:image:alt" content="PivotPocket showing the tool with an example result" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="app.mjs" type="module"></script>
+    <script type="module" src="experience.mjs"></script>
+    <script type="module" src="experience.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#workspace">Skip to workspace</a>
+    <header>
+      <a class="brand" href="./"><img src="logo.svg" alt="" />PivotPocket</a>
+      <nav aria-label="Main">
+        <a href="#guide">How to use</a
+        ><a class="repo" href="https://github.com/MusaBukhari237/pivotpocket">GitHub ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section class="masthead">
+        <div class="intro">
+          <p class="category">Data workbench</p>
+          <h1>Rows become answers.</h1>
+          <p class="description">
+            Group a CSV into a compact pivot. Compare categories with counts or sums.
+          </p>
+        </div>
+        <figure class="scene diagram">
+          <img src="scene.svg" alt="Data workbench process illustration" width="440" height="260" />
+        </figure>
+      </section>
+      <div class="workspace" id="workspace">
+        <section class="panel input" aria-labelledby="settings">
+          <h2 id="settings">Arrange your fields</h2>
+          <div class="fields">
+            <label class="wide"
+              >CSV with a header row<textarea
+                id="csv"
+                placeholder="Region,Product,Units"
+                maxlength="250000"
+                spellcheck="false"
+                rows="6"
+              ></textarea></label
+            ><label>Rows<select id="row"></select></label
+            ><label>Columns<select id="column"></select></label
+            ><label
+              >Operation<select id="mode">
+                <option value="sum">Sum</option>
+                <option value="count">Count rows</option>
+              </select></label
+            ><label>Values<select id="value"></select></label>
+          </div>
+          <div class="actions">
+            <button type="button" id="run">Build pivot</button
+            ><button type="button" class="quiet" id="example">Load example</button>
+          </div>
+          <p class="note">
+            Choose one row field and one column field. Sum requires a numeric values column.
+          </p>
+        </section>
+        <section class="panel output" aria-labelledby="output" id="output-panel">
+          <h2 id="output" tabindex="-1">Pivot table</h2>
+          <p class="result-status" id="result-status" aria-live="polite">Ready when you are</p>
+          <div class="result" id="result" aria-live="polite">
+            Load the example or enter your own input.
+          </div>
+        </section>
+      </div>
+      <details class="guide" id="guide">
+        <summary>How to use PivotPocket</summary>
+        <ol>
+          <li>Paste CSV with a header row.</li>
+          <li>Choose row and column fields, then a sum or count.</li>
+          <li>Build a pivot and download the grouped values.</li>
+        </ol>
+      </details>
+    </main>
+    <footer>
+      <span
+        >PivotPocket ·
+        <a href="https://github.com/MusaBukhari237/pivotpocket/blob/main/LICENSE"
+          >MIT licensed</a
+        ></span
+      ><span class="credits"
+        ><a href="https://www.leadceleris.com/">LeadCeleris</a
+        ><a href="https://www.aifficiento.biz/">AIFFICIENTO</a></span
+      >
+    </footer>
+  </body>
 </html>
